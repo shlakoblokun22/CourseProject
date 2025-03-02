@@ -13,7 +13,7 @@ namespace CourseProject
         public NeuronType Type { get; }
         public Layer(List<Neuron> neurons, NeuronType type = NeuronType.Normal)
         {
-            
+
 
             Neurons = neurons;
         }
