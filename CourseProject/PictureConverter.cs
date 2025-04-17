@@ -13,18 +13,20 @@ namespace CourseProject
         private int Boundary { get; set; } = 128;
         public int Width { get; set; }
         public int Height { get; set; }
+        public int GroupSize { get; set; } = 10;
         public List<int> Convert(string path)
         {
             var result = new List<int>();
             var image = new Bitmap(path);
-            Height =  image.Height; // размер выходного листа
-            Width = image.Width;
+            var resizeimage = new Bitmap(10,10);
+            Height = resizeimage.Height; // размер выходного листа
+            Width = resizeimage.Width;
 
-            for (int y = 0; y < image.Height; y++)
+            for (int y = 0; y < resizeimage.Height; y += GroupSize)
             {
-                for (int x = 0; x < image.Width; x++)
+                for (int x = 0; x < resizeimage.Width; x += GroupSize)
                 {
-                    var pixel = image.GetPixel(x, y);
+                    var pixel = resizeimage.GetPixel(x, y);
                     var value = GrayGradation(pixel);
                     result.Add(value);
                 }
